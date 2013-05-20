@@ -135,7 +135,8 @@
 							-ms-transform: translate3d(0, 0, 0);
 								transform: translate3d(0, 0, 0);
 
-						/* Transition mode: cover-flow; */
+						/* Transition mode: cover-flow;
+						  doesn't work with position: absolute on li's */
 						-webkit-transition: all 1500ms ease-in-out;
 						   -moz-transition: all 1500ms ease-in-out;
 							 -o-transition: all 1500ms ease-in-out;
@@ -420,6 +421,30 @@
 		}
 
 		window.addEventListener('hashchange', setActiveItems);
+
+		var setHash = function(hash) {
+
+			if (hash.indexOf('#') > 0) {
+				hash = hash.substr(hash.lastIndexOf('#'));
+			} else if (hash.substr(0, 1) !== '#') {
+				hash = '#' + hash;
+			}
+
+			if (window.history.pushState) {
+				window.history.pushState(null, null, hash);
+			} else {
+				window.location = hash;
+			}
+		};
+
+		//// @TODO: Catch anchors with preventDefault to avoid scrollTo and then pushState()
+
+		// for (var j = 0; j <= document.querySelectorAll('a[href^="#slide-"]').length; j++) {
+		// 	this.addEventListener('click', function(event) {
+		// 		event.preventDefault();
+		// 		// window.history.pushState('#slide-'+j, 'Slide '+j, '#slide-'+j);
+		// 	});
+		// }
 
 	</script>
 </body>
