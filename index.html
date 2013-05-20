@@ -49,6 +49,9 @@
 			position: relative;
 			width: 100%;
 			height: 22rem;
+
+			/* Dark background for nice transition effect */
+			background: #000;
 		}
 
 			/* Slider Start */
@@ -343,7 +346,6 @@
 
 		window.addEventListener('hashchange', setActiveItems);
 
-
 		var setHash = function(hash) {
 
 			if (hash.indexOf('#') > 0) {
@@ -359,10 +361,14 @@
 			}
 		};
 
-		document.querySelectorAll('a[href^="#slide-"]').addEventListener('click', function(event) {
-			event.preventDefault();
-			setHash(this.get('href'));
-		});
+		//// @TODO: Catch anchors with preventDefault to avoid scrollTo and then pushState()
+
+		// for (var j = 0; j <= document.querySelectorAll('a[href^="#slide-"]').length; j++) {
+		// 	this.addEventListener('click', function(event) {
+		// 		event.preventDefault();
+		// 		// window.history.pushState('#slide-'+j, 'Slide '+j, '#slide-'+j);
+		// 	});
+		// }
 
 	</script>
 </body>
