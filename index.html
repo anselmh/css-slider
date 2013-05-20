@@ -1,0 +1,386 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Slider by Anselm Hannemann</title>
+	<meta name="description" content="A mostly CSS based slider which is only enhanced by JavaScript and is hardware accellerated by default.">
+
+	<!-- Please be aware that this prevents the user from scaling your website via pinch-gesture. The user is not able to zoom text or other elements. If you need scaling, do not use this snippet but the one listed on h5bp.com/viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		/* start normalize */
+		article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif;color:#222}body{margin:0;font-size:1em;line-height:1.4}
+		a { color: #00e; }
+		a:visited { color: #551a8b; }
+		a:hover { color: #06e; }
+		a:focus { outline: thin dotted; }
+		a:hover, a:active { outline: 0; }
+		abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}ins{background:#ff9;color:#000;text-decoration:none}mark{background:#ff0;color:#000;font-style:italic;font-weight:bold}pre,code,kbd,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:"";content:none}small{font-size:85%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}ul,ol{margin:1em 0;padding:0 0 0 40px}dd{margin:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none;margin:0;padding:0}img{border:0;-ms-interpolation-mode:bicubic;vertical-align:middle}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:0;margin:0;padding:0}label{cursor:pointer}legend{border:0;*margin-left:-7px;padding:0;white-space:normal}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;*overflow:visible}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*width:13px;*height:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top;resize:vertical}input:invalid,textarea:invalid{background-color:#f0dddd}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}.invisible{visibility:hidden}.clearfix:before,.clearfix:after{content:"";display:table}.clearfix:after{clear:both}.clearfix{*zoom:1}
+		/* normalize finished, your css below */
+
+		/* User customizable settings */
+
+		#slide-1,
+		#slide-2,
+		#slide-3,
+		#slide-4 {
+			background-size: cover;
+		}
+
+		#slide-1 {
+			background-image: url('slide-1.jpg');
+		}
+
+		#slide-2 {
+			background-image: url('slide-2.jpg');
+		}
+
+		#slide-3 {
+			background-image: url('slide-3.jpg');
+		}
+
+		#slide-4 {
+			background-image: url('slide-4.jpg');
+		}
+
+		/* Wireframe Presets */
+		html {
+			background: #222;
+		}
+
+		body {
+			width: 1024px;
+			height: 704px;
+
+			background: #111;
+			color: #fff;
+
+		}
+
+		@media only screen and (min-width: 1025px) and (min-height: 769px) {
+			body {
+
+				/* Desktop showcase */
+				margin: 2em auto;
+				border: 2em solid #000;
+				border-radius: 2em;
+
+				box-shadow: 0 0 500px rgba(255, 255, 255, 0.25);
+			}
+		}
+
+		/* Wireframe Presets End */
+
+		/* CSS Components */
+
+		html,
+		body {
+			max-width: 100%;
+			max-width: 100vw;
+		}
+
+		body {
+			font-family: 'franklin-gothic-urw', 'Helvetica Neue', Arial, sans-serif;
+			font-weight: 300;
+		}
+
+			.banner-main--feature {
+				position: relative;
+				width: 100%;
+				height: 22rem;
+			}
+
+				/* Slider Start */
+
+				.banner-main--feature > ol {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+				}
+
+					.banner-main--feature > .slider-content > li {
+						position: relative;
+						float: left;
+
+						overflow: hidden;
+						opacity: 0;
+
+						-webkit-transform: translate3d(0, 0, 0);
+						   -moz-transform: translate3d(0, 0, 0);
+							 -o-transform: translate3d(0, 0, 0);
+							-ms-transform: translate3d(0, 0, 0);
+								transform: translate3d(0, 0, 0);
+
+						/* Transition mode: cover-flow; */
+						-webkit-transition: all 1500ms ease-in-out;
+						   -moz-transition: all 1500ms ease-in-out;
+							 -o-transition: all 1500ms ease-in-out;
+							-ms-transition: all 1500ms ease-in-out;
+								transition: all 1500ms ease-in-out;
+
+						/* Transition mode: push; */
+						-webkit-transition: width 500ms ease-in-out;
+						   -moz-transition: width 500ms ease-in-out;
+							 -o-transition: width 500ms ease-in-out;
+							-ms-transition: width 500ms ease-in-out;
+								transition: width 500ms ease-in-out;
+
+						/* Transition mode: opacity; */
+						-webkit-transition: opacity 500ms ease-in-out;
+						   -moz-transition: opacity 500ms ease-in-out;
+							 -o-transition: opacity 500ms ease-in-out;
+							-ms-transition: opacity 500ms ease-in-out;
+								transition: opacity 500ms ease-in-out;
+					}
+
+						.banner-main--feature > .slider-content > li:not(:target) {
+							opacity: 0;
+							width: 0;
+						}
+
+						.banner-main--feature > .slider-content > li:target,
+						.banner-main--feature > .slider-content > .active {
+							opacity: 1;
+							width: 100%;
+							height: 22rem;
+						}
+
+						.banner-main--feature > .slider-content > .active {
+							opacity: 1 !important;
+							width: 100% !important;
+						}
+
+				.banner-main--feature > .slider--bullets {
+					position: absolute;
+					z-index: 30;
+
+					width: 4rem;
+					height: 1rem;
+					left: 47.5%;
+					margin-top: 19.5rem;
+
+					-webkit-transform: translateZ(0);
+				}
+
+					.banner-main--feature > .slider--bullets > li {
+						display: inline-block;
+					}
+
+					.banner-main--feature > .slider--bullets > li > a {
+						margin: auto;
+						max-width: none;
+						text-decoration: none;
+						font-family: Helvetica, Arial, sans-serif !important;
+					}
+
+					.banner-main--feature > .slider--bullets > li > a:before {
+						position: relative;
+						z-index: 90;
+
+						display: block;
+
+						content: '\2022';
+						font-size: 1.5rem;
+						line-height: 1;
+						text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+
+						color: rgba(255, 255, 255, 0.65);
+
+						-webkit-transform: translateZ(0);
+					}
+
+						.banner-main--feature > .slider--bullets > li > a.active:before {
+							color: #fff;
+						}
+
+				/* Slider End */
+
+
+				.banner-main--feature > ol > li > h2,
+				.banner-main--feature > ol > li > p,
+				.banner-main--feature > ol > li > a {
+					max-width: 27rem;
+					margin-left: 1rem;
+				}
+
+				.banner-main--feature > ol > li > h2,
+				.banner-main--feature > ol > li > p {
+					text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+				}
+
+				.banner-main--feature > ol > li > h2 {
+					margin-top: 8rem;
+
+					font-family: 'museo-slab', Times, serif;
+					font-weight: 500;
+					line-height: 1;
+					letter-spacing: 1px;
+				}
+
+				.banner-main--feature > .slider-content > li > h3,
+				.banner-main--feature > .slider-content > li > p {
+					margin: 0 0 0 1rem;
+
+					font-family: 'Helvetica Neue', 'Helvetica', 'Segoe UI Light', sans-serif;
+
+					color: #fff;
+				}
+
+				.banner-main--feature > .slider-content > li > h3 {
+					margin-top: 12rem;
+					font-size: 3rem;
+
+					font-weight: 100;
+					letter-spacing: 1px;
+				}
+
+				.banner-main--feature > .slider-content > li > p {
+					font-weight: 100;
+					letter-spacing: 2px;
+
+					max-width: 17rem;
+				}
+
+				.slider-clickframe {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 20;
+					width: 100%;
+					height: 100%;
+					background: #fff;
+					opacity: 0;
+					filter: alpha(opacity=0);
+
+					-webkit-tap-highlight-color: rgba(0,0,0,0);
+				}
+	</style>
+</head>
+<body>
+
+	<header class="banner-login">
+
+	</header>
+
+	<main class="banner-main">
+
+		<section class="banner-main--feature">
+
+			<ol class="slider-content">
+
+				<li id="slide-1" class="active">
+					<h3>To the rocks!</h3>
+					<p>Fontainebleau is the ultimate Mekka for Boulderers…</p>
+				</li>
+				<li id="slide-2">
+					<h3>Sunset over Berlin</h3>
+					<p>This beautiful picture has been taken in Berlin, Germany.</p>
+				</li>
+				<li id="slide-3">
+					<h3>Sunset over Berlin</h3>
+					<p>This beautiful picture has been taken in Berlin, Germany.</p>
+				</li>
+				<li id="slide-4">
+					<h3>Warsaw at Night</h3>
+					<p>Polands city Warsaw has a lovely center which looks spectacular a night.</p>
+				</li>
+
+			</ol>
+
+			<ol class="slider--bullets">
+
+				<li><a href="#slide-1" class="active"></a></li>
+				<li><a href="#slide-2"></a></li>
+				<li><a href="#slide-3"></a></li>
+				<li><a href="#slide-4"></a></li>
+
+			</ol>
+
+		</section>
+
+	</main>
+
+	<script>
+		if(window.location.hash != "" && window.location.hash !== '#slide-1') {
+			var firstSlide = document.querySelector('.slider-content > li:first-child');
+			firstSlide.removeAttribute('class');
+		}
+
+		// Set clickable frame on Slider
+
+		var setClickFrame = function() {
+
+			var getContainer = document.getElementsByClassName('banner-main--feature');
+			var newNode = document.createElement("a");
+
+			var getHashId = window.location.hash.match(/\d+(\.\d+)?/g);
+			getHashId = parseInt(getHashId[0]);
+			var maxCount = document.querySelectorAll('.slider-content > li').length;
+			var nextItem;
+
+			if(getHashId < maxCount) {
+				nextItem = getHashId+1;
+			} else {
+				nextItem = 1;
+			}
+
+			newNode.setAttribute('class', 'slider-clickframe');
+			newNode.setAttribute('href', '#slide-'+nextItem);
+
+			getContainer[0].appendChild(newNode);
+		}
+
+		window.addEventListener('hashchange', function() {
+
+			var getClickFrame = document.querySelector('.slider-clickframe');
+
+			var getHashId = window.location.hash.match(/\d+(\.\d+)?/g);
+			getHashId = parseInt(getHashId[0]);
+			var maxCount = document.querySelectorAll('.slider-content > li').length;
+			var nextItem;
+
+			if(getHashId < maxCount) {
+				nextItem = getHashId+1;
+			} else {
+				nextItem = 1;
+			}
+
+			getClickFrame.setAttribute('href', '#slide-'+nextItem);
+		});
+
+		// Set active items
+		var setActiveItems = function() {
+
+			// Set active slide
+			var getActiveSlide = document.querySelector('.slider-content > .active');
+
+			if (getActiveSlide !== null) {
+				getActiveSlide.removeAttribute('class');
+			}
+
+			// Set active bullet
+			var activeSlideBullet = document.querySelector('.slider--bullets .active');
+			var newSlideBullet = window.location.hash;
+			var sliderBulletArray = document.querySelectorAll('a[href^="#slide-"]');
+
+			// remove old active class
+			activeSlideBullet.removeAttribute('class');
+
+			// Set new active class
+			document.querySelector('a[href="'+newSlideBullet+'"]').setAttribute('class', 'active');
+		}
+
+		// Initialize all the things
+		window.addEventListener('load', setClickFrame);
+
+		if(window.location.hash.indexOf("slide-") >= 0) {
+			window.addEventListener('load', setActiveItems);
+		}
+
+		window.addEventListener('hashchange', setActiveItems);
+
+	</script>
+</body>
+</html>
