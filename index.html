@@ -45,179 +45,179 @@
 
 		/* CSS Components */
 
-			.banner-main--feature {
-				position: relative;
-				width: 100%;
-				height: 22rem;
+		.banner-main--feature {
+			position: relative;
+			width: 100%;
+			height: 22rem;
+		}
+
+			/* Slider Start */
+
+			.banner-main--feature > ol {
+				list-style: none;
+				padding: 0;
+				margin: 0;
 			}
 
-				/* Slider Start */
+				.banner-main--feature > .slider-content > li {
+					position: relative;
+					float: left;
 
-				.banner-main--feature > ol {
-					list-style: none;
-					padding: 0;
-					margin: 0;
+					overflow: hidden;
+					opacity: 0;
+
+					-webkit-transform: translate3d(0, 0, 0);
+					   -moz-transform: translate3d(0, 0, 0);
+						 -o-transform: translate3d(0, 0, 0);
+						-ms-transform: translate3d(0, 0, 0);
+							transform: translate3d(0, 0, 0);
+
+					/* Transition mode: cover-flow;
+						  doesn't work with position: absolute on li's */
+					-webkit-transition: all 1500ms ease-in-out;
+					   -moz-transition: all 1500ms ease-in-out;
+						 -o-transition: all 1500ms ease-in-out;
+						-ms-transition: all 1500ms ease-in-out;
+							transition: all 1500ms ease-in-out;
+
+					/* Transition mode: push; */
+					-webkit-transition: width 500ms ease-in-out;
+					   -moz-transition: width 500ms ease-in-out;
+						 -o-transition: width 500ms ease-in-out;
+						-ms-transition: width 500ms ease-in-out;
+							transition: width 500ms ease-in-out;
+
+					/* Transition mode: opacity; */
+					-webkit-transition: opacity 500ms ease-in-out;
+					   -moz-transition: opacity 500ms ease-in-out;
+						 -o-transition: opacity 500ms ease-in-out;
+						-ms-transition: opacity 500ms ease-in-out;
+							transition: opacity 500ms ease-in-out;
 				}
 
-					.banner-main--feature > .slider-content > li {
-						position: relative;
-						float: left;
-
-						overflow: hidden;
+					.banner-main--feature > .slider-content > li:not(:target) {
 						opacity: 0;
-
-						-webkit-transform: translate3d(0, 0, 0);
-						   -moz-transform: translate3d(0, 0, 0);
-							 -o-transform: translate3d(0, 0, 0);
-							-ms-transform: translate3d(0, 0, 0);
-								transform: translate3d(0, 0, 0);
-
-						/* Transition mode: cover-flow;
-						      doesn't work with position: absolute on li's */
-						-webkit-transition: all 1500ms ease-in-out;
-						   -moz-transition: all 1500ms ease-in-out;
-							 -o-transition: all 1500ms ease-in-out;
-							-ms-transition: all 1500ms ease-in-out;
-								transition: all 1500ms ease-in-out;
-
-						/* Transition mode: push; */
-						-webkit-transition: width 500ms ease-in-out;
-						   -moz-transition: width 500ms ease-in-out;
-							 -o-transition: width 500ms ease-in-out;
-							-ms-transition: width 500ms ease-in-out;
-								transition: width 500ms ease-in-out;
-
-						/* Transition mode: opacity; */
-						-webkit-transition: opacity 500ms ease-in-out;
-						   -moz-transition: opacity 500ms ease-in-out;
-							 -o-transition: opacity 500ms ease-in-out;
-							-ms-transition: opacity 500ms ease-in-out;
-								transition: opacity 500ms ease-in-out;
+						width: 0;
 					}
 
-						.banner-main--feature > .slider-content > li:not(:target) {
-							opacity: 0;
-							width: 0;
-						}
+					.banner-main--feature > .slider-content > li:target,
+					.banner-main--feature > .slider-content > .active {
+						opacity: 1;
+						width: 100%;
+						height: 22rem;
+					}
 
-						.banner-main--feature > .slider-content > li:target,
-						.banner-main--feature > .slider-content > .active {
-							opacity: 1;
-							width: 100%;
-							height: 22rem;
-						}
+					.banner-main--feature > .slider-content > .active {
+						opacity: 1 !important;
+						width: 100% !important;
+					}
 
-						.banner-main--feature > .slider-content > .active {
-							opacity: 1 !important;
-							width: 100% !important;
-						}
+			.banner-main--feature > .slider--bullets {
+				position: absolute;
+				z-index: 30;
 
-				.banner-main--feature > .slider--bullets {
-					position: absolute;
-					z-index: 30;
+				width: 4rem;
+				height: 1rem;
+				left: 47.5%;
+				margin-top: 19.5rem;
 
-					width: 4rem;
-					height: 1rem;
-					left: 47.5%;
-					margin-top: 19.5rem;
+				-webkit-transform: translateZ(0);
+			}
+
+				.banner-main--feature > .slider--bullets > li {
+					display: inline-block;
+				}
+
+				.banner-main--feature > .slider--bullets > li > a {
+					margin: auto;
+					max-width: none;
+					text-decoration: none;
+					font-family: Helvetica, Arial, sans-serif !important;
+				}
+
+				.banner-main--feature > .slider--bullets > li > a:before {
+					position: relative;
+					z-index: 90;
+
+					display: block;
+
+					content: '\2022';
+					font-size: 1.5rem;
+					line-height: 1;
+					text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+
+					color: rgba(255, 255, 255, 0.65);
 
 					-webkit-transform: translateZ(0);
 				}
 
-					.banner-main--feature > .slider--bullets > li {
-						display: inline-block;
+					.banner-main--feature > .slider--bullets > li > a.active:before {
+						color: #fff;
 					}
 
-					.banner-main--feature > .slider--bullets > li > a {
-						margin: auto;
-						max-width: none;
-						text-decoration: none;
-						font-family: Helvetica, Arial, sans-serif !important;
-					}
-
-					.banner-main--feature > .slider--bullets > li > a:before {
-						position: relative;
-						z-index: 90;
-
-						display: block;
-
-						content: '\2022';
-						font-size: 1.5rem;
-						line-height: 1;
-						text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
-
-						color: rgba(255, 255, 255, 0.65);
-
-						-webkit-transform: translateZ(0);
-					}
-
-						.banner-main--feature > .slider--bullets > li > a.active:before {
-							color: #fff;
-						}
-
-				/* Slider End */
+			/* Slider End */
 
 
-				.banner-main--feature > ol > li > h2,
-				.banner-main--feature > ol > li > p,
-				.banner-main--feature > ol > li > a {
-					max-width: 27rem;
-					margin-left: 1rem;
-				}
+			.banner-main--feature > ol > li > h2,
+			.banner-main--feature > ol > li > p,
+			.banner-main--feature > ol > li > a {
+				max-width: 27rem;
+				margin-left: 1rem;
+			}
 
-				.banner-main--feature > ol > li > h2,
-				.banner-main--feature > ol > li > p {
-					text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
-				}
+			.banner-main--feature > ol > li > h2,
+			.banner-main--feature > ol > li > p {
+				text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+			}
 
-				.banner-main--feature > ol > li > h2 {
-					margin-top: 8rem;
+			.banner-main--feature > ol > li > h2 {
+				margin-top: 8rem;
 
-					font-family: 'museo-slab', Times, serif;
-					font-weight: 500;
-					line-height: 1;
-					letter-spacing: 1px;
-				}
+				font-family: 'museo-slab', Times, serif;
+				font-weight: 500;
+				line-height: 1;
+				letter-spacing: 1px;
+			}
 
-				.banner-main--feature > .slider-content > li > h3,
-				.banner-main--feature > .slider-content > li > p {
-					margin: 0 0 0 1rem;
+			.banner-main--feature > .slider-content > li > h3,
+			.banner-main--feature > .slider-content > li > p {
+				margin: 0 0 0 1rem;
 
-					font-family: 'Helvetica Neue', 'Helvetica', 'Segoe UI Light', sans-serif;
+				font-family: 'Helvetica Neue', 'Helvetica', 'Segoe UI Light', sans-serif;
 
-					color: #fff;
-				}
+				color: #fff;
+			}
 
-				.banner-main--feature > .slider-content > li > h3 {
-					margin-top: 12rem;
-					font-size: 3rem;
+			.banner-main--feature > .slider-content > li > h3 {
+				margin-top: 12rem;
+				font-size: 3rem;
 
-					font-weight: 100;
-					letter-spacing: 1px;
-				}
+				font-weight: 100;
+				letter-spacing: 1px;
+			}
 
-				.banner-main--feature > .slider-content > li > p {
-					font-weight: 100;
-					letter-spacing: 2px;
+			.banner-main--feature > .slider-content > li > p {
+				font-weight: 100;
+				letter-spacing: 2px;
 
-					max-width: 17rem;
-				}
+				max-width: 17rem;
+			}
 
-				.slider-clickframe {
-					position: absolute;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					z-index: 20;
-					width: 100%;
-					height: 100%;
-					background: #fff;
-					opacity: 0;
-					filter: alpha(opacity=0);
+			.slider-clickframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 20;
+				width: 100%;
+				height: 100%;
+				background: #fff;
+				opacity: 0;
+				filter: alpha(opacity=0);
 
-					-webkit-tap-highlight-color: rgba(0,0,0,0);
-				}
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+			}
 	</style>
 </head>
 <body>
@@ -342,6 +342,27 @@
 		}
 
 		window.addEventListener('hashchange', setActiveItems);
+
+
+		var setHash = function(hash) {
+
+			if (hash.indexOf('#') > 0) {
+				hash = hash.substr(hash.lastIndexOf('#'));
+			} else if (hash.substr(0, 1) !== '#') {
+				hash = '#' + hash;
+			}
+
+			if (window.history.pushState) {
+				window.history.pushState(null, null, hash);
+			} else {
+				window.location = hash;
+			}
+		};
+
+		document.querySelectorAll('a[href^="#slide-"]').addEventListener('click', function(event) {
+			event.preventDefault();
+			setHash(this.get('href'));
+		});
 
 	</script>
 </body>
