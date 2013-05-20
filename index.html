@@ -43,46 +43,7 @@
 			background-image: url('slide-4.jpg');
 		}
 
-		/* Wireframe Presets */
-		html {
-			background: #222;
-		}
-
-		body {
-			width: 1024px;
-			height: 704px;
-
-			background: #111;
-			color: #fff;
-
-		}
-
-		@media only screen and (min-width: 1025px) and (min-height: 769px) {
-			body {
-
-				/* Desktop showcase */
-				margin: 2em auto;
-				border: 2em solid #000;
-				border-radius: 2em;
-
-				box-shadow: 0 0 500px rgba(255, 255, 255, 0.25);
-			}
-		}
-
-		/* Wireframe Presets End */
-
 		/* CSS Components */
-
-		html,
-		body {
-			max-width: 100%;
-			max-width: 100vw;
-		}
-
-		body {
-			font-family: 'franklin-gothic-urw', 'Helvetica Neue', Arial, sans-serif;
-			font-weight: 300;
-		}
 
 			.banner-main--feature {
 				position: relative;
@@ -111,7 +72,8 @@
 							-ms-transform: translate3d(0, 0, 0);
 								transform: translate3d(0, 0, 0);
 
-						/* Transition mode: cover-flow; */
+						/* Transition mode: cover-flow;
+						      doesn't work with position: absolute on li's */
 						-webkit-transition: all 1500ms ease-in-out;
 						   -moz-transition: all 1500ms ease-in-out;
 							 -o-transition: all 1500ms ease-in-out;
