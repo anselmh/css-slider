@@ -10,7 +10,12 @@ CSS Slider consists of a little set of files with minimal markup. I wanted to ke
 
 	index.html
 
-This file contains a section for CSS where you find a normalize/reset part and on bottom you'll find the JavaScript:
+This file contains a section for CSS where you will find a normalize/reset part followed by the actual slider's CSS. On bottom of the page you'll find some JavaScript which is helpful to keep a smooth working slider.
+
+Instructions
+-------
+
+For more instructions have a look at the [CSS Slider homepage](http://anselmh.github.io/css-slider/#howtouse).
 
 
 Author
@@ -18,3 +23,8 @@ Author
 
 [Anselm Hannemann](http://helloanselm.com "Anselm's Portfolio").
 I am on twitter as [@helloanselm](https://twitter.com/helloanselm).
+
+License
+-------
+
+This project is under MIT license. Please [see the license](LICENSE.md).
