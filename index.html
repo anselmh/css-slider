@@ -350,14 +350,18 @@
 		}
 
 		// Set clickable frame on Slider
-
-		var setClickFrame = function() {
+		 window.addEventListener('DOMContentLoaded', function() {
 
 			var getContainer = document.getElementsByClassName('banner-main--feature');
 			var newNode = document.createElement("a");
 
-			var getHashId = window.location.hash.match(/\d+(\.\d+)?/g);
-			getHashId = parseInt(getHashId[0]);
+			var getHashId = 1; // Set initial value to 1 as this the 1st is always loaded
+
+			if(window.location.hash !== '') {
+				getHashId = window.location.hash.match(/\d+(\.\d+)?/g);
+				getHashId = parseInt(getHashId[0]);
+			}
+
 			var maxCount = document.querySelectorAll('.slider-content > li').length;
 			var nextItem;
 
@@ -371,7 +375,7 @@
 			newNode.setAttribute('href', '#slide-'+nextItem);
 
 			getContainer[0].appendChild(newNode);
-		}
+		});
 
 		window.addEventListener('hashchange', function() {
 
@@ -414,7 +418,6 @@
 		}
 
 		// Initialize all the things
-		window.addEventListener('load', setClickFrame);
 
 		if(window.location.hash.indexOf("slide-") >= 0) {
 			window.addEventListener('load', setActiveItems);
