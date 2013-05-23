@@ -338,110 +338,124 @@
 	</main>
 
 	<script>
-		if(window.location.hash != "" && window.location.hash !== '#slide-1') {
-			var firstSlide = document.querySelector('.slider-content > li:first-child');
-			firstSlide.removeAttribute('class');
-		}
 
-		// Set clickable frame on Slider
-		 window.addEventListener('DOMContentLoaded', function() {
+		var cssSlider = {
 
-			var getContainer = document.getElementsByClassName('banner-main--feature');
-			var newNode = document.createElement("a");
+				// CSS-Slider selectors
+				selectors: {
+					container: 'banner-main--feature',
+					sliderItems: '.slider-content > li',
+					firstSlide: '.slider-content > li:first-child',
+					activeSlide: '.slider-content > .active',
+					clickFrame: '.slider-clickframe',
+					activeBullet: '.slider--bullets .active',
+					allBulletLinks: 'a[href^="#slide-"]',
+				},
 
-			var getHashId = 1; // Set initial value to 1 as this the 1st is always loaded
+				// Object to remove the class attr of 1st child if 1st child isn't active
+				sliderRemoveFirstClass: function() {
 
-			if(window.location.hash !== '') {
-				getHashId = window.location.hash.match(/\d+(\.\d+)?/g);
-				getHashId = parseInt(getHashId[0]);
-			}
+					var hash = window.location.hash;
 
-			var maxCount = document.querySelectorAll('.slider-content > li').length;
-			var nextItem;
+					if(hash != "" && hash !== '#slide-1') {
+						document.querySelector(cssSlider.selectors.firstSlide).removeAttribute('class');
+					}
 
-			if(getHashId < maxCount) {
-				nextItem = getHashId+1;
-			} else {
-				nextItem = 1;
-			}
+				},
 
-			newNode.setAttribute('class', 'slider-clickframe');
-			newNode.setAttribute('href', '#slide-'+nextItem);
+				setClickFrame: function() {
 
-			getContainer[0].appendChild(newNode);
-		});
+					var getContainer = document.getElementsByClassName(cssSlider.selectors.container);
+					var newNode = document.createElement("a");
 
-		window.addEventListener('hashchange', function() {
+					var hash = window.location.hash;
+					var getHashId = 1; // Set initial value to 1 as this the 1st is always loaded
 
-			var getClickFrame = document.querySelector('.slider-clickframe');
+					if(hash !== '') {
+						getHashId = hash.match(/\d+(\.\d+)?/g);
+						getHashId = parseInt(getHashId[0]);
+					}
 
-			var getHashId = window.location.hash.match(/\d+(\.\d+)?/g);
-			getHashId = parseInt(getHashId[0]);
-			var maxCount = document.querySelectorAll('.slider-content > li').length;
-			var nextItem;
+					var maxCount = document.querySelectorAll(cssSlider.selectors.sliderItems).length;
+					var nextItem;
 
-			if(getHashId < maxCount) {
-				nextItem = getHashId+1;
-			} else {
-				nextItem = 1;
-			}
+					if(getHashId < maxCount) {
+						nextItem = getHashId+1;
+					} else {
+						nextItem = 1;
+					}
 
-			getClickFrame.setAttribute('href', '#slide-'+nextItem);
-		});
+					newNode.setAttribute('class', 'slider-clickframe');
+					newNode.setAttribute('href', '#slide-'+nextItem);
 
-		// Set active items
-		var setActiveItems = function() {
+					getContainer[0].appendChild(newNode);
 
-			// Set active slide
-			var getActiveSlide = document.querySelector('.slider-content > .active');
+				},
 
-			if (getActiveSlide !== null) {
-				getActiveSlide.removeAttribute('class');
-			}
+				changeClickFrame: function() {
 
-			// Set active bullet
-			var activeSlideBullet = document.querySelector('.slider--bullets .active');
-			var newSlideBullet = window.location.hash;
-			var sliderBulletArray = document.querySelectorAll('a[href^="#slide-"]');
+					var getClickFrame = document.querySelector(cssSlider.selectors.clickFrame);
 
-			// remove old active class
-			activeSlideBullet.removeAttribute('class');
+					var hash = window.location.hash;
+					var getHashId = hash.match(/\d+(\.\d+)?/g);
 
-			// Set new active class
-			document.querySelector('a[href="'+newSlideBullet+'"]').setAttribute('class', 'active');
-		}
+					var maxCount = document.querySelectorAll(cssSlider.selectors.sliderItems).length;
+					var nextItem;
 
-		// Initialize all the things
+					getHashId = parseInt(getHashId[0]);
 
-		if(window.location.hash.indexOf("slide-") >= 0) {
-			window.addEventListener('load', setActiveItems);
-		}
+					if(getHashId < maxCount) {
+						nextItem = getHashId+1;
+					} else {
+						nextItem = 1;
+					}
 
-		window.addEventListener('hashchange', setActiveItems);
+					getClickFrame.setAttribute('href', '#slide-'+nextItem);
 
-		var setHash = function(hash) {
+				},
 
-			if (hash.indexOf('#') > 0) {
-				hash = hash.substr(hash.lastIndexOf('#'));
-			} else if (hash.substr(0, 1) !== '#') {
-				hash = '#' + hash;
-			}
+				setActiveItems: function() {
 
-			if (window.history.pushState) {
-				window.history.pushState(null, null, hash);
-			} else {
-				window.location = hash;
-			}
+					var hash = window.location.hash;
+
+					// Set active Slide
+					var getActiveSlide = document.querySelector(cssSlider.selectors.activeSlide);
+
+					if (getActiveSlide !== null) {
+						getActiveSlide.removeAttribute('class');
+					}
+
+					// Set active Bullet
+					var activeSlideBullet = document.querySelector(cssSlider.selectors.activeBullet);
+					var sliderBulletArray = document.querySelectorAll(cssSlider.selectors.allBulletLinks);
+
+					// Remove old active Class
+					activeSlideBullet.removeAttribute('class');
+
+					// Set new active Class
+					document.querySelector('a[href="'+hash+'"]').setAttribute('class', 'active');
+				},
+
+				init: function() {
+					var hash = window.location.hash;
+
+					// Set clickable frame on Slider
+					window.addEventListener('DOMContentLoaded', cssSlider.setClickFrame);
+					window.addEventListener('hashchange', cssSlider.changeClickFrame);
+
+					// Set active item
+					window.addEventListener('hashchange', cssSlider.setActiveItems);
+
+					if(hash.indexOf("slide-") >= 0) {
+						window.addEventListener('DOMContentLoaded', cssSlider.setActiveItems);
+					}
+
+				}
+
 		};
 
-		//// @TODO: Catch anchors with preventDefault to avoid scrollTo and then pushState()
-
-		// for (var j = 0; j <= document.querySelectorAll('a[href^="#slide-"]').length; j++) {
-		// 	this.addEventListener('click', function(event) {
-		// 		event.preventDefault();
-		// 		// window.history.pushState('#slide-'+j, 'Slide '+j, '#slide-'+j);
-		// 	});
-		// }
+		// Initialize cssSlider
+		cssSlider.init();
 
 	</script>
 	<script>
