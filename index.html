@@ -45,7 +45,7 @@
 
 		/* CSS Components */
 
-		.banner-main--feature {
+		.slider-wrapper {
 			position: relative;
 			width: 100%;
 			height: 22rem;
@@ -58,7 +58,7 @@
 
 			/* Slider Start */
 
-			.banner-main--feature > ol {
+			.slider-wrapper > ol {
 				padding: 0;
 				margin: 0;
 
@@ -66,7 +66,7 @@
 				overflow: hidden;
 			}
 
-				.banner-main--feature > .slider-content > li {
+				.slider-wrapper > .slider-content > li {
 					position: relative;
 					float: left;
 
@@ -102,24 +102,24 @@
 							transition: opacity 500ms ease-in-out;
 				}
 
-					.banner-main--feature > .slider-content > li:not(:target) {
+					.slider-wrapper > .slider-content > li:not(:target) {
 						opacity: 0;
 						width: 0;
 					}
 
-					.banner-main--feature > .slider-content > li:target,
-					.banner-main--feature > .slider-content > .active {
+					.slider-wrapper > .slider-content > li:target,
+					.slider-wrapper > .slider-content > .active {
 						opacity: 1;
 						width: 100%;
 						height: 22rem;
 					}
 
-					.banner-main--feature > .slider-content > .active {
+					.slider-wrapper > .slider-content > .active {
 						opacity: 1 !important;
 						width: 100% !important;
 					}
 
-			.banner-main--feature > .slider--bullets {
+			.slider-wrapper > .slider--bullets {
 				position: absolute;
 				z-index: 30;
 
@@ -131,18 +131,18 @@
 				-webkit-transform: translateZ(0);
 			}
 
-				.banner-main--feature > .slider--bullets > li {
+				.slider-wrapper > .slider--bullets > li {
 					display: inline-block;
 				}
 
-				.banner-main--feature > .slider--bullets > li > a {
+				.slider-wrapper > .slider--bullets > li > a {
 					margin: auto;
 					max-width: none;
 					text-decoration: none;
 					font-family: Helvetica, Arial, sans-serif !important;
 				}
 
-				.banner-main--feature > .slider--bullets > li > a:before {
+				.slider-wrapper > .slider--bullets > li > a:before {
 					position: relative;
 					z-index: 90;
 
@@ -158,26 +158,26 @@
 					-webkit-transform: translateZ(0);
 				}
 
-					.banner-main--feature > .slider--bullets > li > a.active:before {
+					.slider-wrapper > .slider--bullets > li > a.active:before {
 						color: #fff;
 					}
 
 			/* Slider End */
 
 
-			.banner-main--feature > ol > li > h2,
-			.banner-main--feature > ol > li > p,
-			.banner-main--feature > ol > li > a {
+			.slider-wrapper > ol > li > h2,
+			.slider-wrapper > ol > li > p,
+			.slider-wrapper > ol > li > a {
 				max-width: 27rem;
 				margin-left: 1rem;
 			}
 
-			.banner-main--feature > ol > li > h2,
-			.banner-main--feature > ol > li > p {
+			.slider-wrapper > ol > li > h2,
+			.slider-wrapper > ol > li > p {
 				text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
 			}
 
-			.banner-main--feature > ol > li > h2 {
+			.slider-wrapper > ol > li > h2 {
 				margin-top: 8rem;
 
 				font-family: 'museo-slab', Times, serif;
@@ -186,8 +186,8 @@
 				letter-spacing: 1px;
 			}
 
-			.banner-main--feature > .slider-content > li > h3,
-			.banner-main--feature > .slider-content > li > p {
+			.slider-wrapper > .slider-content > li > h3,
+			.slider-wrapper > .slider-content > li > p {
 				margin: 0 0 0 1rem;
 
 				font-family: 'Helvetica Neue', 'Helvetica', 'Segoe UI Light', sans-serif;
@@ -195,7 +195,7 @@
 				color: #fff;
 			}
 
-			.banner-main--feature > .slider-content > li > h3 {
+			.slider-wrapper > .slider-content > li > h3 {
 				margin-top: 12rem;
 				font-size: 3rem;
 
@@ -203,7 +203,7 @@
 				letter-spacing: 1px;
 			}
 
-			.banner-main--feature > .slider-content > li > p {
+			.slider-wrapper > .slider-content > li > p {
 				font-weight: 100;
 				letter-spacing: 2px;
 
@@ -229,7 +229,7 @@
 </head>
 <body>
 
-	<section class="banner-main--feature">
+	<section class="slider-wrapper">
 
 		<ol class="slider-content">
 
@@ -269,7 +269,7 @@
 
 				// CSS-Slider selectors
 				selectors: {
-					container: 'banner-main--feature',
+					container: 'slider-wrapper',
 					sliderItems: '.slider-content > li',
 					firstSlide: '.slider-content > li:first-child',
 					activeSlide: '.slider-content > .active',
