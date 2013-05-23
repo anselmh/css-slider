@@ -15,7 +15,7 @@ This file contains a section for CSS where you will find a normalize/reset part 
 Instructions
 -------
 
-For more instructions have a look at the [Wiki](http://anselmh.github.io/css-slider/wiki).
+For more instructions have a look at the [Wiki](https://anselmh.github.io/css-slider/wiki).
 
 
 Author
