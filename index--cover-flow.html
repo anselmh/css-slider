@@ -70,6 +70,43 @@
 			color: #fff;
 		}
 
+		.transition-types {
+			list-style: none;
+			padding: 0;
+
+			height: 2rem;
+		}
+
+			.transition-types > li {
+				display: block;
+				float: left;
+
+				padding: 0.25rem 1rem;
+				line-height: 2;
+
+				background: #444;
+			}
+
+				.transition-types > li:hover {
+					background: #000;
+				}
+
+				.transition-types > li:first-child {
+					border-radius: 4px 0 0 4px;
+					border-right: 1px solid #999;
+				}
+
+				.transition-types > li:last-child {
+					border-radius: 0 4px 4px 0;
+					border-left: 1px solid #999;
+				}
+
+				.transition-types a {
+					color: #fff;
+					text-decoration: none;
+					letter-spacing: 1px;
+				}
+
 		@media only screen and (min-width: 1025px) and (min-height: 769px) {
 			.slider-wrapper {
 
@@ -103,6 +140,15 @@
 
 			.slider-wrapper > .slider-content > li > h3 {
 				margin-top: 16rem;
+			}
+
+			.transition-types {
+				height: auto;
+			}
+
+			.transition-types > li {
+				float: none;
+				border-radius: 4px !important;
 			}
 		}
 
@@ -311,7 +357,7 @@
 	<main class="banner-main">
 		<h2>Demo</h2>
 
-		<ul>
+		<ul class="transition-types">
 			<li><a href="index.html">Show transition 'dissolve'</a></li>
 			<li><a href="index--push.html">Show transition 'push'</a></li>
 			<li><a href="index--cover-flow.html">Show transition 'cover-flow'</a></li>
