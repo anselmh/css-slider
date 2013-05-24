@@ -209,6 +209,14 @@
 							 -o-transform: translate3d(0, 0, 0);
 							-ms-transform: translate3d(0, 0, 0);
 								transform: translate3d(0, 0, 0);
+
+						-webkit-backface-visibility: hidden;
+						   -moz-backface-visibility: hidden;
+						        backface-visibility: hidden;
+
+						-webkit-perspective: 1000;
+						   -moz-perspective: 1000;
+						        perspective: 1000;
 					}
 
 						#demo--cover-flow > .slider-content > li {
@@ -264,8 +272,6 @@
 					height: 1rem;
 					left: 47.5%;
 					bottom: 1rem;
-
-					-webkit-transform: translateZ(0);
 				}
 
 					.slider-wrapper > .slider--bullets > li {
@@ -291,8 +297,6 @@
 						text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
 
 						color: rgba(255, 255, 255, 0.65);
-
-						-webkit-transform: translateZ(0);
 					}
 
 						.slider-wrapper > .slider--bullets > li > a.active:before {
