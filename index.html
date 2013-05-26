@@ -277,6 +277,7 @@
 					container: 'slider-wrapper',
 					sliderItems: '.slider-content > li',
 					firstSlide: '.slider-content > li:first-child',
+					curImage: '.slider-content > li > img',
 					activeSlide: '.slider-content > .active',
 					clickFrame: '.slider-clickframe',
 					activeBullet: '.slider--bullets .active',
@@ -292,6 +293,26 @@
 						document.querySelector(cssSlider.selectors.firstSlide).removeAttribute('class');
 					}
 
+				},
+
+				autoHeight: function() {
+					var container = document.getElementsByClassName(cssSlider.selectors.container);
+
+					var initialWidth = container.clientWidth;
+					var initialHeight = container.clientHeight;
+
+					// initialWidth = window.getComputedStyle(container).getPropertyValue('height')
+
+					var aspectRatio = initialWidth / initialHeight;
+
+					window.addEventListener('resize', function() {
+
+						var curWidth = container.clientWidth;
+						var curHeight = container.clientHeight;
+						var newHeight =  (curWidth / initialWidth) * aspectRatio;
+
+						container[0].setAttribute('style', newHeight + 'px');
+					});
 				},
 
 				setClickFrame: function() {
@@ -380,6 +401,8 @@
 					if(hash.indexOf("slide-") >= 0) {
 						window.addEventListener('DOMContentLoaded', cssSlider.setActiveItems);
 					}
+
+					window.addEventListener('DOMContentLoaded', cssSlider.autoHeight);
 
 				}
 
