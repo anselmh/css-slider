@@ -2,6 +2,12 @@ CHANGELOG
 =====================
 
 
+1.0.2
+------
+
+- Improve CSS Selectors
+
+
 1.0.1
 ------
 
