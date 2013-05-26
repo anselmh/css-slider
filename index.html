@@ -303,6 +303,8 @@
 
 					// initialWidth = window.getComputedStyle(container).getPropertyValue('height')
 
+					// fetch image out of getComputedStyle CSS background, determine aspectRatio and set this as basis for element's container
+
 					var aspectRatio = initialWidth / initialHeight;
 
 					window.addEventListener('resize', function() {
