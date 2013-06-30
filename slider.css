@@ -1,0 +1,212 @@
+/* User customizable settings */
+
+#slide-1,
+#slide-2,
+#slide-3,
+#slide-4 {
+	background-size: cover;
+}
+
+#slide-1 {
+	background-image: url('img/slide-1.jpg');
+}
+
+#slide-2 {
+	background-image: url('img/slide-2.jpg');
+}
+
+#slide-3 {
+	background-image: url('img/slide-3.jpg');
+}
+
+#slide-4 {
+	background-image: url('img/slide-4.jpg');
+}
+
+/* CSS Components */
+
+.slider-wrapper {
+	position: relative;
+	width: 100%;
+	height: 22rem;
+
+	overflow: hidden;
+
+	/* Dark background for nice transition effect */
+	background: #000;
+}
+
+	/* Slider Start */
+
+	.slider-content {
+		padding: 0;
+		margin: 0;
+		max-height: 100%;
+
+		list-style: none;
+		overflow: hidden;
+	}
+
+		.slider-content > li {
+			position: relative;
+			float: left;
+
+			overflow: hidden;
+			opacity: 0;
+
+			-webkit-transform: translate3d(0, 0, 0);
+			   -moz-transform: translate3d(0, 0, 0);
+				 -o-transform: translate3d(0, 0, 0);
+				-ms-transform: translate3d(0, 0, 0);
+					transform: translate3d(0, 0, 0);
+
+			-webkit-backface-visibility: hidden;
+			   -moz-backface-visibility: hidden;
+			        backface-visibility: hidden;
+
+			-webkit-perspective: 1000;
+			   -moz-perspective: 1000;
+			        perspective: 1000;
+
+			/* Transition mode: cover-flow;
+				  doesn't work with position: absolute on li's */
+			-webkit-transition: all 1500ms ease-in-out;
+			   -moz-transition: all 1500ms ease-in-out;
+				 -o-transition: all 1500ms ease-in-out;
+				-ms-transition: all 1500ms ease-in-out;
+					transition: all 1500ms ease-in-out;
+
+			/* Transition mode: push; */
+			-webkit-transition: width 1000ms ease-in-out;
+			   -moz-transition: width 1000ms ease-in-out;
+				 -o-transition: width 1000ms ease-in-out;
+				-ms-transition: width 1000ms ease-in-out;
+					transition: width 1000ms ease-in-out;
+
+			/* Transition mode: opacity; */
+			-webkit-transition: opacity 750ms ease-in-out;
+			   -moz-transition: opacity 750ms ease-in-out;
+				 -o-transition: opacity 750ms ease-in-out;
+				-ms-transition: opacity 750ms ease-in-out;
+					transition: opacity 750ms ease-in-out;
+		}
+
+			.slider-content > li:not(:target) {
+				opacity: 0;
+				width: 0;
+			}
+
+			.slider-content > li:target,
+			.slider-content > .active {
+				opacity: 1;
+				width: 100%;
+				height: 22rem;
+			}
+
+			.slider-content > .active {
+				opacity: 1 !important;
+				width: 100% !important;
+			}
+
+	.slider--bullets {
+		position: absolute;
+		z-index: 30;
+
+		width: 4rem;
+		height: 1rem;
+		left: 47.5%;
+		bottom: 1rem;
+	}
+
+		.slider--bullets > li {
+			display: inline-block;
+		}
+
+		.slider--bullets > li > a {
+			margin: auto;
+			max-width: none;
+			text-decoration: none;
+			font-family: Helvetica, Arial, sans-serif !important;
+		}
+
+		.slider--bullets > li > a:before {
+			position: relative;
+			z-index: 90;
+
+			display: block;
+
+			content: '\2022';
+			font-size: 1.5rem;
+			line-height: 1;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+
+			color: rgba(255, 255, 255, 0.65);
+		}
+
+			.slider--bullets > li > a.active:before {
+				color: #fff;
+			}
+
+	/* Slider End */
+
+
+	.slider-content > li > h2,
+	.slider-content > li > p,
+	.slider-content > li > a {
+		max-width: 27rem;
+		margin-left: 1rem;
+	}
+
+	.slider-content > li > h2,
+	.slider-content > li > p {
+		text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+	}
+
+	.slider-content > li > h2 {
+		margin-top: 8rem;
+
+		font-family: 'museo-slab', Times, serif;
+		font-weight: 500;
+		line-height: 1;
+		letter-spacing: 1px;
+	}
+
+	.slider-content > li > h3,
+	.slider-content > li > p {
+		margin: 0 0 0 1rem;
+
+		font-family: 'Helvetica Neue', 'Helvetica', 'Segoe UI Light', sans-serif;
+
+		color: #fff;
+	}
+
+	.slider-content > li > h3 {
+		margin-top: 12rem;
+		font-size: 3rem;
+
+		font-weight: 100;
+		letter-spacing: 1px;
+	}
+
+	.slider-content > li > p {
+		font-weight: 100;
+		letter-spacing: 2px;
+
+		max-width: 17rem;
+	}
+
+	.slider-clickframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 20;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		opacity: 0;
+		filter: alpha(opacity=0);
+
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
