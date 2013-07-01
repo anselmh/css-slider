@@ -6,16 +6,19 @@ This is a mainly CSS based modern image and text slider – hardware accellerate
 Contents
 --------
 
-CSS Slider consists of a little set of files with minimal markup. I wanted to keep everything plain and simple, so you we have everything in one file except the images:
+CSS Slider consists of a little set of files with minimal markup. I wanted to keep everything plain and simple:
 
-	index.html
+	index.html contains the markup and references to CSS and JavaScript
+	site/css/normalize.css contains normalize.css
+	slider.css contains the styles for the slider
+	slider.js contains the helpers for the slider
+	img/* contains the images that are used in the slider
 
-This file contains a section for CSS where you will find a normalize/reset part followed by the actual slider's CSS. On bottom of the page you'll find some JavaScript which is helpful to keep a smooth working slider.
 
 Instructions
 -------
 
-For more instructions have a look at the [Wiki](https://github.com/anselmh/css-slider/wiki).
+For more instructions have a look at the Code or the [Wiki](https://github.com/anselmh/css-slider/wiki).
 
 
 Author
@@ -23,6 +26,9 @@ Author
 
 [Anselm Hannemann](http://helloanselm.com "Anselm's Portfolio").
 I am on twitter as [@helloanselm](https://twitter.com/helloanselm).
+
+Thanks to [Hans-Christian Reinl](https://github.com/drublic) for
+contributing to this repository regularly.
 
 License
 -------
